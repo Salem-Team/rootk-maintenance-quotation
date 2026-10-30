@@ -6,29 +6,6 @@ import { Reveal } from "@/components/Reveal";
 import { SiteNav } from "@/components/SiteNav";
 import { content, useLang } from "@/lib/i18n";
 
-function EditableField({
-  className = "",
-  placeholder,
-  defaultValue = "",
-}: {
-  className?: string;
-  placeholder: string;
-  defaultValue?: string;
-}) {
-  return (
-    <span
-      contentEditable
-      suppressContentEditableWarning
-      role="textbox"
-      aria-label={placeholder}
-      data-placeholder={placeholder}
-      className={`inline-block min-w-[7rem] rounded-md border border-dashed border-line bg-navy/5 px-2 py-0.5 outline-none empty:before:text-mute-2 empty:before:content-[attr(data-placeholder)] focus:border-navy/40 ${className}`}
-    >
-      {defaultValue}
-    </span>
-  );
-}
-
 export default function HomePage() {
   const { lang, t, dir } = useLang();
   const modules = content.modules[lang];
@@ -75,16 +52,6 @@ export default function HomePage() {
               transition={{ duration: 0.55, delay: 0.05 }}
               className="max-w-3xl"
             >
-              <div className="mb-4 flex flex-wrap items-center gap-2 rounded-2xl border border-line bg-white px-3 py-2.5 text-sm font-bold text-navy-deep shadow-sm">
-                <span className="font-en text-[10px] tracking-[0.1em] text-mute-2 uppercase">{t("presentedTo")}</span>
-                <span className="h-3 w-px bg-line" />
-                <EditableField placeholder={t("clientPlaceholder")} />
-                <span className="hidden h-3 w-px bg-line sm:block" />
-                <span className="text-[10px] font-bold tracking-[0.08em] text-mute-2 uppercase">{t("quoteNo")}</span>
-                <EditableField placeholder={t("quoteNoPlaceholder")} className="font-en text-xs" />
-                <span className="text-[10px] font-bold tracking-[0.08em] text-mute-2 uppercase">{t("dateLabel")}</span>
-                <EditableField placeholder={t("datePlaceholder")} className="font-en text-xs" />
-              </div>
               <p className="mb-3 text-[11px] font-bold tracking-[0.08em] text-navy uppercase sm:tracking-[0.12em]">
                 {t("heroEyebrow")}
               </p>
@@ -111,10 +78,9 @@ export default function HomePage() {
               <p className="mt-2 text-sm leading-6 text-white/85 sm:text-[15px]">{t("priceWords")}</p>
             </motion.a>
 
-            <div className="navy-grad mt-6 grid grid-cols-2 gap-3 rounded-2xl p-4 text-white sm:grid-cols-4">
+            <div className="navy-grad mt-6 grid grid-cols-2 gap-3 rounded-2xl p-4 text-white sm:grid-cols-3">
               {[
                 [t("preparedBy"), "ROOTK Systems"],
-                [t("client"), t("clientPlaceholder")],
                 [t("currency"), "EGP"],
                 [t("projectType"), t("projectTypeValue")],
               ].map(([label, value]) => (
@@ -157,7 +123,6 @@ export default function HomePage() {
               <h2 className="font-display text-xl font-extrabold text-navy-deep sm:text-2xl">{t("modulesTitle")}</h2>
               <div className="my-3 h-1 w-8 rounded-full bg-navy" />
               <p className="text-sm leading-6 text-mute">{t("modulesLede")}</p>
-              <p className="mt-3 text-sm font-semibold text-navy-deep">{t("modulesHeading")}</p>
             </div>
           </Reveal>
 
@@ -239,31 +204,7 @@ export default function HomePage() {
                 <li>{t("term2")}</li>
                 <li>{t("term3")}</li>
                 <li>{t("term4")}</li>
-                <li className="sm:col-span-2">{t("term5")}</li>
               </ol>
-            </div>
-          </Reveal>
-
-          <Reveal>
-            <div className="surface rounded-2xl p-5">
-              <h3 className="font-display mb-4 text-lg font-bold text-navy-deep">{t("signatureTitle")}</h3>
-              <div className="grid gap-4 sm:grid-cols-2">
-                {[
-                  [t("signatureName"), ""],
-                  [t("signatureTitleRole"), ""],
-                  [t("signatureDate"), ""],
-                  [t("signatureSign"), ""],
-                ].map(([label]) => (
-                  <div key={label} className="rounded-xl border border-dashed border-line bg-white/70 p-3">
-                    <div className="mb-6 text-xs font-bold tracking-[0.08em] text-mute-2 uppercase">{label}</div>
-                    <div className="h-8 border-b border-line" />
-                  </div>
-                ))}
-              </div>
-              <div className="mt-4 rounded-xl border border-dashed border-line bg-white/70 p-3">
-                <div className="mb-10 text-xs font-bold tracking-[0.08em] text-mute-2 uppercase">{t("signatureStamp")}</div>
-                <div className="h-8 border-b border-line" />
-              </div>
             </div>
           </Reveal>
 
