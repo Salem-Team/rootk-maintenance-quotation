@@ -1,0 +1,13 @@
+node_modules/
+.next/
+out/
+dist/
+.DS_Store
+*.log
+.vercel
+.env
+.env.*
+!.env.example
+.cursor/
+*.pdf
+preview/
